@@ -24,6 +24,10 @@ while True:
         if black_button_state == False:
                 print('Black Button Pressed...')
                 blink001.rainbow_cycle_successive(pixels, wait=0.1)
+                blink001.rainbow_cycle_successive(pixels, wait=0.1)
+                blink001.rainbow_cycle(pixels, wait=0.01)
+                blink001.brightness_decrease(pixels)
+                blink001.appear_from_back(pixels)
                 time.sleep(0.2)
         elif red_button_state == False:
                 print('Red Button Pressed...')
