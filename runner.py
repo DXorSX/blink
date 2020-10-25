@@ -14,12 +14,12 @@ try:
                 red_button_state = GPIO.input(24)
                 if black_button_state == False:
                         print('Black Button Pressed...')
-                        rainbow_cycle_successive(pixels, wait=0.1)
+                        blink001.rainbow_cycle_successive(pixels, wait=0.1)
                         time.sleep(0.2)
                 elif red_button_state == False:
                         print('Red Button Pressed...')
-                        pixels.clear()
-                        pixels.show() 
+                        blink001.pixels.clear()
+                        blink001.pixels.show() 
                         time.sleep(0.2)
                 else:
                         time.sleep(0.2)
