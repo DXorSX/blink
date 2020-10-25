@@ -14,7 +14,7 @@ try:
              print('Button Pressed...')
              time.sleep(0.2)
          else:
-             # print ('Button Released... ')
+             time.sleep(0.2)
              # GPIO.output(24, False)
 except:
     GPIO.cleanup()
