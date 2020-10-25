@@ -92,7 +92,7 @@ def appear_from_back(pixels, color=(255, 0, 0)):
             # set then the pixel at position j
             pixels.set_pixel(j, Adafruit_WS2801.RGB_to_color( color[0], color[1], color[2] ))
             pixels.show()
-            time.sleep(0.00005)
+            # time.sleep(0.00005)
             
  
 if __name__ == "__main__":
