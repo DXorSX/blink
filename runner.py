@@ -29,6 +29,7 @@ while True:
                 threads.append(t)
                 t.start()
                 time.sleep(0.2)
+                print('Black Button Pressed...End')
         elif red_button_state == False:
                 print('Red Button Pressed...')
                 # blink001.pixels.clear()
