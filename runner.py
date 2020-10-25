@@ -1,11 +1,12 @@
 import RPi.GPIO as GPIO
 import time
+import subprocess
+import blink001
 
 GPIO.setmode(GPIO.BCM)
 
 GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP) #Button to GPIO23
 GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_UP) #Button to GPIO24
-# GPIO.setup(24, GPIO.OUT)  #LED to GPIO24
 
 try:
         while True:
@@ -13,9 +14,12 @@ try:
                 red_button_state = GPIO.input(24)
                 if black_button_state == False:
                         print('Black Button Pressed...')
+                        rainbow_cycle_successive(pixels, wait=0.1)
                         time.sleep(0.2)
                 elif red_button_state == False:
                         print('Red Button Pressed...')
+                        pixels.clear()
+                        pixels.show() 
                         time.sleep(0.2)
                 else:
                         time.sleep(0.2)
