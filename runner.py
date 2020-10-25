@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 import Adafruit_WS2801
 import Adafruit_GPIO.SPI as SPI
 import time
-import subprocess
+import threading
 import blink001
 
 GPIO.setmode(GPIO.BCM)
@@ -17,22 +17,22 @@ SPI_PORT   = 0
 SPI_DEVICE = 0
 pixels = Adafruit_WS2801.WS2801Pixels(PIXEL_COUNT, spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE), gpio=GPIO)
 
+threads = []
+
 #try:
 while True:
         black_button_state = GPIO.input(23)
         red_button_state = GPIO.input(24)
         if black_button_state == False:
                 print('Black Button Pressed...')
-                blink001.rainbow_cycle_successive(pixels, wait=0.1)
-                blink001.rainbow_cycle_successive(pixels, wait=0.1)
-                blink001.rainbow_cycle(pixels, wait=0.01)
-                blink001.brightness_decrease(pixels)
-                blink001.appear_from_back(pixels)
+                t = threading.Thread(target=blink001.appear_from_back(pixels))
+                threads.append(t)
+                t.start()
                 time.sleep(0.2)
         elif red_button_state == False:
                 print('Red Button Pressed...')
-                blink001.pixels.clear()
-                blink001.pixels.show() 
+                # blink001.pixels.clear()
+                # blink001.pixels.show() 
                 time.sleep(0.2)
         else:
                 time.sleep(0.2)
