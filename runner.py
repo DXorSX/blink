@@ -25,7 +25,7 @@ while True:
         red_button_state = GPIO.input(24)
         if black_button_state == False:
                 print('Black Button Pressed...')
-                if index < 2:
+                if index < 3:
                         index = index + 1
                 else:
                         index = 0
@@ -35,6 +35,9 @@ while True:
                         t.start()
                 elif index == 2:
                         t = threading.Thread(target=blink001.rainbow_cycle_successive, args=(pixels,))
+                        t.start()
+                elif index == 3:
+                        t = threading.Thread(target=blink001.rainbow_cycle, args=(pixels,))
                         t.start()
                 time.sleep(0.2)
                 print('Black Button Pressed...End')
