@@ -34,7 +34,7 @@ while True:
                         t = threading.Thread(target=blink001.appear_from_back, args=(pixels,))
                         t.start()
                 elif index == 2:
-                        t = threading.Thread(target=rainbow_cycle_successive, args=((pixels, wait=0.1,))
+                        t = threading.Thread(target=rainbow_cycle_successive, args=((pixels, 0.1,))
                         t.start()
                 time.sleep(0.2)
                 print('Black Button Pressed...End')
