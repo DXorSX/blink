@@ -15,7 +15,10 @@ SPI_PORT   = 0
 SPI_DEVICE = 0
 pixels = Adafruit_WS2801.WS2801Pixels(PIXEL_COUNT, spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE), gpio=GPIO)
  
- 
+global stop_threads
+stop_threads = False
+
+
 # Define the wheel function to interpolate between different hues.
 def wheel(pos):
     if pos < 85:
@@ -83,7 +86,6 @@ def blink_color(pixels, blink_times=5, wait=0.5, color=(255,0,0)):
  
 def appear_from_back(pixels, color=(255, 0, 0)):
     pos = 0
-    global stop_threads = False
     for i in range(pixels.count()):
         for j in reversed(range(i, pixels.count())):
             pixels.clear()
