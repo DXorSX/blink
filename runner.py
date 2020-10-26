@@ -25,7 +25,7 @@ while True:
         red_button_state = GPIO.input(24)
         if black_button_state == False:
                 print('Black Button Pressed...')
-                print('Thread count %d', threads.count)
+                print "Thread count: " + threads.count
                 blink001.stop_threads = False
                 if threads.count>1:
                         t = threading.Thread(target=blink001.appear_from_back, args=(pixels,))
