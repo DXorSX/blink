@@ -25,15 +25,17 @@ while True:
         red_button_state = GPIO.input(24)
         if black_button_state == False:
                 print('Black Button Pressed...')
-                t = threading.Thread(target=blink001.appear_from_back, args=(pixels,))
-                threads.append(t)
-                t.start()
+                if threads.count>0:
+                        t = threading.Thread(target=blink001.appear_from_back, args=(pixels,))
+                        threads.append(t)
+                        t.start()
                 time.sleep(0.2)
                 print('Black Button Pressed...End')
         elif red_button_state == False:
                 print('Red Button Pressed...')
-                # blink001.pixels.clear()
-                # blink001.pixels.show() 
+                stop_threads = True
+                blink001.pixels.clear()
+                blink001.pixels.show() 
                 time.sleep(0.2)
         else:
                 time.sleep(0.2)
