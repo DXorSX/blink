@@ -38,6 +38,8 @@ def rainbow_cycle_successive(pixels, wait=0.1):
         # Then add in j which makes the colors go around per pixel
         # the % 96 is to make the wheel cycle around
         pixels.set_pixel(i, wheel(((i * 256 // pixels.count())) % 256) )
+        if stop_threads: 
+                break
         pixels.show()
         if wait > 0:
             time.sleep(wait)
@@ -46,6 +48,8 @@ def rainbow_cycle(pixels, wait=0.005):
     for j in range(256): # one cycle of all 256 colors in the wheel
         for i in range(pixels.count()):
             pixels.set_pixel(i, wheel(((i * 256 // pixels.count()) + j) % 256) )
+        if stop_threads: 
+                break
         pixels.show()
         if wait > 0:
             time.sleep(wait)
@@ -54,6 +58,8 @@ def rainbow_colors(pixels, wait=0.05):
     for j in range(256): # one cycle of all 256 colors in the wheel
         for i in range(pixels.count()):
             pixels.set_pixel(i, wheel(((256 // pixels.count() + j)) % 256) )
+        if stop_threads: 
+                break
         pixels.show()
         if wait > 0:
             time.sleep(wait)
@@ -66,6 +72,8 @@ def brightness_decrease(pixels, wait=0.01, step=1):
             g = int(max(0, g - step))
             b = int(max(0, b - step))
             pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color( r, g, b ))
+        if stop_threads: 
+                break
         pixels.show()
         if wait > 0:
             time.sleep(wait)
@@ -77,6 +85,8 @@ def blink_color(pixels, blink_times=5, wait=0.5, color=(255,0,0)):
         for j in range(2):
             for k in range(pixels.count()):
                 pixels.set_pixel(k, Adafruit_WS2801.RGB_to_color( color[0], color[1], color[2] ))
+            if stop_threads: 
+                break
             pixels.show()
             time.sleep(0.08)
             pixels.clear()

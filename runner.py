@@ -17,7 +17,7 @@ SPI_PORT   = 0
 SPI_DEVICE = 0
 pixels = Adafruit_WS2801.WS2801Pixels(PIXEL_COUNT, spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE), gpio=GPIO)
 
-threads = []
+index = 0
 
 #try:
 while True:
@@ -25,11 +25,16 @@ while True:
         red_button_state = GPIO.input(24)
         if black_button_state == False:
                 print('Black Button Pressed...')
-                print "Thread count: " + str(threads.count)
+                if index < 2:
+                        index = index + 1
+                else
+                        index = 0
                 blink001.stop_threads = False
-                if threads.count>1:
+                if index == 1:
                         t = threading.Thread(target=blink001.appear_from_back, args=(pixels,))
-                        threads.append(t)
+                        t.start()
+                elif index == 2:
+                        t = threading.Thread(target=rainbow_cycle_successive, args=((pixels, wait=0.1,))
                         t.start()
                 time.sleep(0.2)
                 print('Black Button Pressed...End')
