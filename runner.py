@@ -27,7 +27,7 @@ while True:
                 print('Black Button Pressed...')
                 if index < 2:
                         index = index + 1
-                else
+                else:
                         index = 0
                 blink001.stop_threads = False
                 if index == 1:
