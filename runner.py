@@ -33,7 +33,7 @@ while True:
                 print('Black Button Pressed...End')
         elif red_button_state == False:
                 print('Red Button Pressed...')
-                stop_threads = True
+                blink001.stop_threads = True
                 blink001.pixels.clear()
                 blink001.pixels.show() 
                 time.sleep(0.2)
