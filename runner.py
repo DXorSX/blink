@@ -27,11 +27,10 @@ while True:
         if black_button_state == False and red_button_state == False:
                 blink001.blink_color(pixels, blink_times = 5, color=(255, 0, 0))
         elif black_button_state == False:
-                print('Black Button Pressed...')
                 if index < 3:
                         index = index + 1
                 else:
-                        index = 0
+                        index = 1
                 blink001.stop_threads = False
                 if index == 1:
                         t = threading.Thread(target=blink001.appear_from_back, args=(pixels,))
@@ -42,8 +41,8 @@ while True:
                 elif index == 3:
                         t = threading.Thread(target=blink001.rainbow_cycle, args=(pixels,))
                         t.start()
+                print 'Black Button Pressed, starting programm #' + str(index)
                 time.sleep(0.2)
-                print('Black Button Pressed...End')
         elif red_button_state == False:
                 print('Red Button Pressed...')
                 blink001.stop_threads = True
