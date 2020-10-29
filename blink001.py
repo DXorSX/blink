@@ -119,7 +119,6 @@ def bump_colors(pixels):
             pixels.clear()
             pixels.show()
             break
-
     if stop_threads: 
         break
 
