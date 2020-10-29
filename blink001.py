@@ -109,7 +109,7 @@ def appear_from_back(pixels, color=(255, 0, 0)):
             pixels.show()
             # time.sleep(0.00005)
 
-def bump_colors(pixels)
+def bump_colors(pixels):
     direction_up = true
     i = 1;
     while true:
