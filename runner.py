@@ -47,7 +47,7 @@ while True:
                         t = threading.Thread(target=blink001.brightness_decrease, args=(pixels,))
                         t.start()
                 elif index == 5:
-                        t = threading.Thread(target=blink001.bump_colors, args=(pixels))
+                        t = threading.Thread(target=blink001.bump_colors, args=(pixels,))
                         t.start()
 
                 print 'Black Button Pressed, starting programm #' + str(index)
