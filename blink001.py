@@ -113,6 +113,7 @@ def bump_colors(pixels, color=(255, 0, 0)):
     direction_up = True
     i = 1;
     while True:
+        print 'i is = ', str(i)
         pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color( color[i], color[i], color[i] ))
         pixels.show()
         time.sleep(0.5)
