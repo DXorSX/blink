@@ -110,15 +110,15 @@ def appear_from_back(pixels, color=(255, 0, 0)):
             # time.sleep(0.00005)
 
 def bump_colors(pixels, color=(255, 0, 0)):
-    direction_up = true
+    direction_up = True
     i = 1;
-    while true:
+    while True:
         pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color( color[i], color[i], color[i] ))
         pixels.show()
         if i == 256:
             pixels.clear()
             pixels.show()
-            stop_threads = true
+            stop_threads = True
         if stop_threads: 
             break
 
