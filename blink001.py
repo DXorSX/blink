@@ -123,6 +123,8 @@ def bump_colors(pixels, color=(255, 0, 0)):
                 break
             #time.sleep(0.05)
         i = i+1
+        if stop_threads: 
+            break
         if i == pixels.count():
             pixels.clear()
             pixels.show()
