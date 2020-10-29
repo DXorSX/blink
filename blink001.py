@@ -117,7 +117,7 @@ def bump_colors(pixels, color=(255, 0, 0)):
         pixels.show()
         time.sleep(0.5)
         i = i+1
-        if i == 256:
+        if i == 255:
             pixels.clear()
             pixels.show()
             i = 1
