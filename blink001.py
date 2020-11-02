@@ -113,12 +113,12 @@ def bump_colors(pixels, color=(255, 0, 0)):
     direction_up = True
     i = 1;
     while True:
-        for p in range(pixels.count()):
-            pixels.set_pixel(p, Adafruit_WS2801.RGB_to_color( i, i, i))
-            if stop_threads: 
-                break
-            #time.sleep(0.05)
+        pixels.set_pixels(Adafruit_WS2801.RGB_to_color( i, i, i))
+        if stop_threads: 
+            break
+        #time.sleep(0.05)
         pixels.show()
+        print 'Color = ', str(i)
         i = i+1
         if stop_threads: 
             break
