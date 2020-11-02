@@ -118,7 +118,6 @@ def bump_colors(pixels, color=(255, 0, 0)):
             break
         #time.sleep(0.05)
         pixels.show()
-        print 'Color = ', str(i)
         i = i+1
         if stop_threads: 
             break
@@ -126,6 +125,7 @@ def bump_colors(pixels, color=(255, 0, 0)):
             pixels.clear()
             pixels.show()
             i = 1
+            print 'Color = ', str(i)
         
 
 
