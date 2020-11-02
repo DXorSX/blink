@@ -136,21 +136,48 @@ def bump_colors(pixels, color=(255, 0, 0)):
 def led_clock(pixels, color=(0, 0, 0)):
     now = datetime.datetime.now()
 
-    clocks = pixels.count() % (int(now.hour) + 4)
+    clocks = pixels.count() / (int(now.hour) + 4)
     print 'Clocks: ', str(clocks)
     print 'Hour:   ', str(int(now.hour))
     print 'Minute: ', str(int(now.minute))
-    for i in range(1, clocks):
-        pixels.set_pixel(0*i, Adafruit_WS2801.RGB_to_color( 0, 255, 0))
-        pixels.set_pixel(1*i, Adafruit_WS2801.RGB_to_color( 0, 0, 255))
-        for j in range(1, int(now.hour)):
-            pixels.set_pixel( ( (1+j) *i ), Adafruit_WS2801.RGB_to_color( 255, 0, 0))
-    pixels.show()
-        
-            
+    print '-------------------------'
 
-
+    for i in range(0, clocks):
+        print 'i -> ', str(i)
+        print '-------------------------'
         
+        p = (0 + ((now.hour + 4) * i ))
+        pixels.set_pixel(p, Adafruit_WS2801.RGB_to_color( 0, 10, 0))
+        print 'pixel-G = ', str(p)
+        
+        p = (now.hour + 3 + ((now.hour + 4) * i ))
+        pixels.set_pixel(p, Adafruit_WS2801.RGB_to_color( 0, 10, 0))
+        print 'pixel-G = ', str(p)
+        
+        pixels.show()
+        time.sleep(1)
+
+        p = (1 + ((now.hour + 4) * i ))
+        pixels.set_pixel(p, Adafruit_WS2801.RGB_to_color( 0, 0, 10))
+        print 'pixel-B = ', str(p)
+
+        p = (now.hour + 2 + ((now.hour + 4) * i ))
+        pixels.set_pixel(p, Adafruit_WS2801.RGB_to_color( 0, 0, 10))
+        print 'pixel-B = ', str(p)
+        
+        pixels.show()
+        time.sleep(1)
+
+        for j in range(0, int(now.hour)):
+            p = (2 + j + ((now.hour + 4) * i ))
+            for col in range(100):
+                pixels.set_pixel(p, Adafruit_WS2801.RGB_to_color( col, col/10, col/30))
+                pixels.show()
+#                time.sleep(0.01)
+            print 'pixel-Clock = ', str(p)
+            time.sleep(0.1)
+        
+          
           
  
 if __name__ == "__main__":
