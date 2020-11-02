@@ -17,7 +17,8 @@ SPI_PORT   = 0
 SPI_DEVICE = 0
 pixels = Adafruit_WS2801.WS2801Pixels(PIXEL_COUNT, spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE), gpio=GPIO)
 
-blink001.blink_color(pixels, blink_times = 5, color=(0, 255, 0))
+blink001.blink_color(pixels, blink_times = 1, color=(0, 155, 0))
+blink001.led_clock(pixels, color=(0, 155, 0))
 
 index = 0
 #try:
