@@ -18,9 +18,9 @@ SPI_DEVICE = 0
 pixels = Adafruit_WS2801.WS2801Pixels(PIXEL_COUNT, spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE), gpio=GPIO)
 
 blink001.blink_color(pixels, blink_times = 1, color=(0, 155, 0))
-blink001.led_clock(pixels, color=(0, 155, 0))
+#blink001.led_clock(pixels, color=(0, 155, 0))
 
-index = 0
+index = 6
 #try:
 while True:
         black_button_state = GPIO.input(23)
@@ -28,7 +28,7 @@ while True:
         if black_button_state == False and red_button_state == False:
                 blink001.blink_color(pixels, blink_times = 5, color=(255, 0, 0))
         elif black_button_state == False:
-                if index < 5:
+                if index < 7:
                         index = index + 1
                 else:
                         index = 1
@@ -49,6 +49,12 @@ while True:
                         t.start()
                 elif index == 5:
                         t = threading.Thread(target=blink001.bump_colors, args=(pixels,))
+                        t.start()
+                elif index == 6:
+                        t = threading.Thread(target=blink001.led_clock, args=(pixels,))
+                        t.start()
+                elif index == 7:
+                        t = threading.Thread(target=blink001.random_blink, args=(pixels,))
                         t.start()
 
                 print 'Black Button Pressed, starting programm #' + str(index)

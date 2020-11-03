@@ -1,6 +1,7 @@
 # Simple demo of of the WS2801/SPI-like addressable RGB LED lights.
 import time
 import datetime
+import random
 import RPi.GPIO as GPIO
  
 # Import the WS2801 module.
@@ -134,8 +135,10 @@ def bump_colors(pixels, color=(255, 0, 0)):
             direction_up = True
 
 def led_clock(pixels, color=(0, 0, 0)):
-    now = datetime.datetime.now()
+    pixels.clear()
+    pixels.show()
 
+    now = datetime.datetime.now()
     clocks = pixels.count() / (int(now.hour) + 4)
     print 'Clocks: ', str(clocks)
     print 'Hour:   ', str(int(now.hour))
@@ -143,6 +146,8 @@ def led_clock(pixels, color=(0, 0, 0)):
     print '-------------------------'
 
     for i in range(0, clocks):
+        if stop_threads: 
+            break
         print 'i -> ', str(i)
         print '-------------------------'
         
@@ -173,12 +178,29 @@ def led_clock(pixels, color=(0, 0, 0)):
             for col in range(100):
                 pixels.set_pixel(p, Adafruit_WS2801.RGB_to_color( col, col/10, col/30))
                 pixels.show()
-#                time.sleep(0.01)
             print 'pixel-Clock = ', str(p)
             time.sleep(0.1)
         
           
-          
+def random_blink(pixels, color=(0, 0, 0)):
+    pixels.clear()
+    pixels.show()
+    while True:
+        for i in range(0, 25):
+            p = random.randrange(0, pixels.count(), 1)
+            r = random.randrange(0, 255, 1)
+            g = random.randrange(0, 255, 1)
+            b = random.randrange(0, 255, 1)
+            pixels.set_pixel(p, Adafruit_WS2801.RGB_to_color( r, g, b))
+            print str(i) + ": p=" + str(p) + " r=" + str(r) + " g=" + str(g) + " b=" + str(b)
+        if stop_threads: 
+            break
+        print '---'
+        time.sleep(1)
+        pixels.show()
+
+
+
  
 if __name__ == "__main__":
     # Clear all the pixels to turn them off.
